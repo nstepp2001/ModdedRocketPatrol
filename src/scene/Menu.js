@@ -4,9 +4,10 @@ class Menu extends Phaser.Scene {
   }
   preload() {
     //load audio
-    this.load.audio('sfx_select', './assets/assets_blip_select12.wav');
-    this.load.audio('sfx_explosion', './assets/assets_explosion38.wav');
-    this.load.audio('sfx_rocket', './assets/assets_rocket_shot.wav');
+    this.load.audio('sfx_boratIntro', './assets/wawaweewa.wav');
+    this.load.audio('sfx_mariaExplosion', './assets/veryNice.wav');
+    this.load.audio('sfx_rango', './assets/rangoScream.wav');
+    this.load.audio('sfx_end', './assets/greatSuccess.wav');
   }
   create() {
     let menuConfig = {
@@ -39,8 +40,10 @@ class Menu extends Phaser.Scene {
         spaceshipSpeed: 3,
         gameTimer: 30000    
       }
-      this.sound.play('sfx_select');
-      this.scene.start('playScene');    
+      this.sound.play('sfx_boratIntro');
+      this.clock = this.time.delayedCall(500, () => {
+        this.scene.start('playScene'); 
+    }, null, this);    
     }
     if (Phaser.Input.Keyboard.JustDown(keyRIGHT)) {
       // hard mode
@@ -48,8 +51,10 @@ class Menu extends Phaser.Scene {
       spaceshipSpeed: 4,
       gameTimer: 15000    
       }
-    this.sound.play('sfx_select');
-    this.scene.start('playScene');    
+    this.sound.play('sfx_boratIntro');
+    this.clock = this.time.delayedCall(500, () => {
+      this.scene.start('playScene'); 
+  }, null, this);
     }
   }
 }
